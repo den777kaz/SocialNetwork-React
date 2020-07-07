@@ -1,0 +1,59 @@
+.head {
+  grid-area: c;
+}
+.head img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+
+}
+.person {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+}
+.avatar {
+  width: 30%;
+  margin-right: 20px;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.item {
+  list-style: none;
+  margin-bottom: 5px;
+}
+.item span {
+  font-weight: bold;
+
+}
+
+.posts {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+.posts textarea {
+  width: 70%;
+  min-height: 100px;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  background: lightgrey;
+}
+.btn {
+  padding: 6px 15px;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  outline: none;
+  background: green;
+  width: fit-content;
+  margin-top: 10px;
+
+}

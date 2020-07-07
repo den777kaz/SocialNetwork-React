@@ -1,0 +1,27 @@
+.nav {
+  grid-area: n;
+  background: burlywood;
+  padding: 20px 0;
+}
+
+.item a {
+  color: inherit;
+}
+
+.item {
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.item.active a{
+  color: green;
+}
+
+.item a {
+  color: #000;
+  padding: 3px 10px;
+
+}
+.item:hover a {
+  color: green;
+}
