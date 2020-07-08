@@ -21,7 +21,9 @@ body {
           "n c";
 
 }
-
+.app-wrapper-content {
+  grid-area: c;
+}
 a {
   text-decoration: none;
 }

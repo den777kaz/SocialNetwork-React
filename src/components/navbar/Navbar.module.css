@@ -2,6 +2,8 @@
   grid-area: n;
   background: burlywood;
   padding: 20px 0;
+  height: 100vh;
+  min-width: 150px;
 }
 
 .item a {
