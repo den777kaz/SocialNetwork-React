@@ -14,5 +14,4 @@ const Post = (probs) => {
   )
 }
 
-
 export default Post;
