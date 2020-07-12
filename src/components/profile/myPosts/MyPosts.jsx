@@ -3,6 +3,15 @@ import style from "./MyPosts.module.css";
 import Post from "./post/Post";
 
 const MyPosts = () => {
+
+  let myPostData = [
+    {id: 1, message: "hi", likes: 15},
+    {id: 2, message: "hi, how are you?", likes: 7},
+    {id: 2, message: "hi, how are you?", likes: 7}
+  ];
+
+  let myPost = myPostData.map(p => <Post message={p.message} like={p.likes} />);
+
   return (
     <div>
       <div className={style.posts}>
@@ -10,8 +19,7 @@ const MyPosts = () => {
         <textarea name="message" id="" placeholder="write new post"></textarea>
         <button className={style.btn} type="button">Send</button>
       </div>
-      <Post message="hi, how are you?" like="15" />
-      <Post message="hi, this is my first post" like="7" />
+      {myPost}
     </div>
   )
 }
