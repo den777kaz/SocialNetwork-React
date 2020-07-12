@@ -1,0 +1,40 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogs_items {
+    background: lightgrey;
+    padding: 20px 0;
+    height: 100vh;
+    min-width: 160px;
+}
+
+.dialog {
+    margin-bottom: 10px;
+    padding: 5px 20px;
+}
+.status {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: red;
+    margin-right: 10px;
+}
+.status.active {
+    background: green;
+}
+.dialog.active {
+color: dodgerblue;
+}
+.messages {
+
+}
+.message {
+    border: 1px solid lightgrey;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}

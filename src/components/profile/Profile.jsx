@@ -3,7 +3,8 @@ import style from './Profile.module.css'
 import MyPosts from "./myPosts/MyPosts";
 import Info from "./info/Info";
 
-const Profile = () => {
+const Profile = (props) => {
+
   return (
     <div className={style.head}>
       <div>
@@ -11,7 +12,7 @@ const Profile = () => {
       </div>
       <div>
         <Info />
-        <MyPosts />
+        <MyPosts state={props.state.posts} />
       </div>
     </div>
   )
