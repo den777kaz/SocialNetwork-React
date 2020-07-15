@@ -14,6 +14,7 @@ let onChangeText = () => {
 
 let addText = () => {
   let text = textValue.current.value;
+  if (text !== "")
   props.addNewMessage(text);
 
 };

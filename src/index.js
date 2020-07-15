@@ -3,11 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import state from './redux/state';
-import {renderStart} from "./render";
+import state, {subscribe} from './redux/state';
+import {addNewMessage, changeText} from './redux/state';
 
-
+export let renderStart = (state) => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App
+        state={state}
+        addNewMessage={addNewMessage}
+        changeText={changeText}
+      />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+}
 renderStart(state);
+subscribe(renderStart);
+
 
 
 // If you want your app to work offline and load faster, you can change

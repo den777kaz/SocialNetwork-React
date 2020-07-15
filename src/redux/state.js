@@ -1,5 +1,6 @@
-import {renderStart} from "../render";
-
+let renderStart = () => {
+  console.loge("state changed")
+};
 
 let state = {
   profileData: {
@@ -37,12 +38,12 @@ let state = {
 };
 
 
-export let changeText = (text) => {
+export const changeText = (text) => {
   state.messagesData.updateText = text;
   renderStart(state);
 };
 
-export let addNewMessage = () => {
+export const addNewMessage = () => {
   let newMessage = {
     id: 53,
     message: state.messagesData.updateText
@@ -50,10 +51,13 @@ export let addNewMessage = () => {
 
   state.messagesData.messages.push(newMessage);
   state.messagesData.updateText = "";
+   renderStart(state);
 
-  renderStart(state);
+
 };
-// addNewMessage();
-console.log("result",state.messagesData.messages);
+
+export const subscribe = (observer) => {
+  renderStart = observer;
+};
 
 export default state;
