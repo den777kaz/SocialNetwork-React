@@ -3,7 +3,7 @@ import style from './FriendsItem.module.css';
 
 
 const FriendsItem = (props) => {
-  console.log("item",props);
+  // console.log("item",props);
   return (
         <li className={style.item}><span>
           <img src="" alt=""/>

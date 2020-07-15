@@ -1,3 +1,5 @@
+import {renderStart} from "../render";
+
 
 let state = {
   profileData: {
@@ -32,5 +34,17 @@ let state = {
     ]
   }
 };
+
+export let addNewMessage = (text) => {
+  let newMessage = {
+    id: 53,
+    message: text
+  }
+  state.messagesData.messages.push(newMessage);
+
+  renderStart(state);
+};
+// addNewMessage();
+console.log("result",state.messagesData.messages);
 
 export default state;
