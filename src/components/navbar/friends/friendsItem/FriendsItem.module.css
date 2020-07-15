@@ -1,0 +1,14 @@
+
+.item {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.item span {
+  margin-right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: green;
+}
