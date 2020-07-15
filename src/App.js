@@ -12,7 +12,7 @@ import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 
 const App = (props) => {
-console.log("appppp",props);
+
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -22,7 +22,10 @@ console.log("appppp",props);
           {/*<Route path='/profile'  component={ Profile} />*/}
           {/*<Route path='/dialogs' component={ Dialogs} />*/}
           <Route path='/profile'  render = { () => <Profile state={props.state.profileData} /> }  />
-          <Route path='/dialogs' render={() => <Dialogs addNewMessage={props.addNewMessage} state={props.state.messagesData}/>} />
+          <Route path='/dialogs' render={() => <Dialogs
+            changeText={props.changeText}
+            addNewMessage={props.addNewMessage}
+            state={props.state.messagesData}/>} />
           <Route path='/news' component={News} />
           <Route path='/Music' component={Music} />
           <Route path='/Settings' component={Settings} />

@@ -15,6 +15,7 @@ let state = {
       {id: 2, message: "second message"},
       {id: 3, message: "third message"},
     ],
+    updateText: "hallo",
     dialogs: [
       {id: 1, name: "Denes"},
       {id: 2, name: "John"},
@@ -35,12 +36,20 @@ let state = {
   }
 };
 
-export let addNewMessage = (text) => {
+
+export let changeText = (text) => {
+  state.messagesData.updateText = text;
+  renderStart(state);
+};
+
+export let addNewMessage = () => {
   let newMessage = {
     id: 53,
-    message: text
+    message: state.messagesData.updateText
   }
+
   state.messagesData.messages.push(newMessage);
+  state.messagesData.updateText = "";
 
   renderStart(state);
 };
