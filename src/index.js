@@ -3,23 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import state, {subscribe} from './redux/state';
-import {addNewMessage, changeText} from './redux/state';
+import store from './redux/state';
 
-export let renderStart = (state) => {
+let renderStart = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <App
         state={state}
-        addNewMessage={addNewMessage}
-        changeText={changeText}
+        addNewMessage={store.addNewMessage.bind(store)}
+        changeText={store.changeText.bind(store)}
       />
     </React.StrictMode>,
     document.getElementById('root')
   );
 }
-renderStart(state);
-subscribe(renderStart);
+renderStart(store.getState());
+store._subscribe(renderStart);
 
 
 
