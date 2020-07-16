@@ -35,28 +35,44 @@ let store = {
       ]
     }
   },
-  callSubscribe () {
-    console.log("state changed")
-  },
   _subscribe (observer) {
     this.callSubscribe = observer;
+  },
+
+  callSubscribe () {
+    console.log("state changed")
   },
   getState () {
     return this._state;
   },
-  changeText (text) {
-    this._state.messagesData.updateText = text;
-    this.callSubscribe(this._state);
-  },
-  addNewMessage () {
-    let newMessage = {
-      id: 53,
-      message: this._state.messagesData.updateText
+
+  dispatch (action) {
+
+    switch (action.type) {
+      case "ADD-NEW-MESSAGE":
+        let newMessage = {
+          id: 53,
+          message: this._state.messagesData.updateText
+        }
+        this._state.messagesData.messages.push(newMessage);
+        this._state.messagesData.updateText = "";
+        this.callSubscribe(this._state);
+        break;
+
+      case "CHANGE-TEXT":
+        this._state.messagesData.updateText = action.newText;
+        this.callSubscribe(this._state);
+        break;
+
+      default:
+        console.log("method/function not exist");
     }
-    this._state.messagesData.messages.push(newMessage);
-    this._state.messagesData.updateText = "";
-    this.callSubscribe(this._state);
+
   }
 };
 
+
+window.store = store;
 export default store;
+
+

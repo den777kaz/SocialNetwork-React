@@ -8,14 +8,17 @@ const AddMessage = (props) => {
 let textValue = React.createRef();
 
 let onChangeText = () => {
+
   let text = textValue.current.value;
-  props.changeText(text);
+  let action = {type: "CHANGE-TEXT", newText: text};
+
+  props.dispatch(action);
+  // props.dispatch({type: "CHANGE-TEXT", newText: text});
 };
 
 let addText = () => {
-  let text = textValue.current.value;
-  if (text !== "")
-  props.addNewMessage(text);
+  if (textValue.current.value !== "")
+  props.dispatch( {type: "ADD-NEW-MESSAGE"});
 
 };
   return (

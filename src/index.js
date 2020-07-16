@@ -10,8 +10,7 @@ let renderStart = (state) => {
     <React.StrictMode>
       <App
         state={state}
-        addNewMessage={store.addNewMessage.bind(store)}
-        changeText={store.changeText.bind(store)}
+        dispatch={store.dispatch.bind(store)}
       />
     </React.StrictMode>,
     document.getElementById('root')
