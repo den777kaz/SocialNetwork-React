@@ -1,13 +1,17 @@
+import messagesDataReducer from "./messagesDataReducer";
+import profileDataReducer from "./profileDataReducer";
+
 
 
 let store = {
   _state: {
     profileData: {
       posts: [
-        {id: 1, message: "hi", likes: 15},
-        {id: 2, message: "hi, how are you?", likes: 7},
-        {id: 2, message: "hi, how are you?", likes: 7}
-      ]
+        {id: 1, post: "hi", likes: 15},
+        {id: 2, post: "hi, how are you?", likes: 7},
+        {id: 2, post: "hi, how are you?", likes: 7}
+      ],
+      updatePostText: ""
     },
     messagesData: {
       messages: [
@@ -47,27 +51,9 @@ let store = {
   },
 
   dispatch (action) {
-
-    switch (action.type) {
-      case "ADD-NEW-MESSAGE":
-        let newMessage = {
-          id: 53,
-          message: this._state.messagesData.updateText
-        }
-        this._state.messagesData.messages.push(newMessage);
-        this._state.messagesData.updateText = "";
-        this.callSubscribe(this._state);
-        break;
-
-      case "CHANGE-TEXT":
-        this._state.messagesData.updateText = action.newText;
-        this.callSubscribe(this._state);
-        break;
-
-      default:
-        console.log("method/function not exist");
-    }
-
+    store._state.messagesData = messagesDataReducer(store._state.messagesData, action);
+    store._state.profileData = profileDataReducer(store._state.profileData, action);
+    this.callSubscribe(this._state);
   }
 };
 

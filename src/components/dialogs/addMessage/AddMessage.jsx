@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './AddMessage.module.css';
+import {addNewMessageActionCreator, changeTextActionCreator} from "../../../redux/messagesDataReducer";
 
 
 
@@ -10,15 +11,13 @@ let textValue = React.createRef();
 let onChangeText = () => {
 
   let text = textValue.current.value;
-  let action = {type: "CHANGE-TEXT", newText: text};
-
-  props.dispatch(action);
+  props.dispatch(changeTextActionCreator(text));
   // props.dispatch({type: "CHANGE-TEXT", newText: text});
 };
 
 let addText = () => {
   if (textValue.current.value !== "")
-  props.dispatch( {type: "ADD-NEW-MESSAGE"});
+  props.dispatch(addNewMessageActionCreator());
 
 };
   return (

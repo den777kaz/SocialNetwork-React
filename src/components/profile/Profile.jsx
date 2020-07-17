@@ -12,7 +12,7 @@ const Profile = (props) => {
       </div>
       <div>
         <Info />
-        <MyPosts state={props.state.posts} />
+        <MyPosts dispatch={props.dispatch} state={props.state} />
       </div>
     </div>
   )

@@ -9,7 +9,7 @@ const Post = (probs) => {
           <img src="https://www.mlive.com/resizer/WHw98KiEZAbpKg2rrlK1fiDBm98=/450x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/ETSJBFFEBNBCDG6BVGJWPZMVPI.jpg" alt="avatar"/>
           <span className={style.like}>Like <span className={style.like_count}>{probs.like}</span></span>
         </div>
-       <p>{probs.message}</p>
+       <p>{probs.post}</p>
       </div>
   )
 }
