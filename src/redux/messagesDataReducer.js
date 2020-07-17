@@ -5,7 +5,7 @@ const ADD_NEW_MESSAGE = "ADD-NEW-MESSAGE";
 let messagesDataReducer = (state, action) => {
   switch (action.type) {
     // Messages
-    case CHANGE_TEXT:
+    case ADD_NEW_MESSAGE:
       let newMessage = {
         id: 53,
         message: state.updateText
@@ -14,7 +14,7 @@ let messagesDataReducer = (state, action) => {
       state.updateText = "";
       return state;
 
-    case ADD_NEW_MESSAGE:
+    case CHANGE_TEXT:
       state.updateText = action.newText;
       return state;
 
