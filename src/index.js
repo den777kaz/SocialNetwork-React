@@ -18,6 +18,7 @@ let renderStart = (state) => {
 }
 renderStart(store.getState());
 
+// observer
 store.subscribe(() =>{
   let state = store.getState()
   renderStart(state);
