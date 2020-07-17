@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store from './redux/store';
+import store from './redux/redux-store';
 
 let renderStart = (state) => {
   ReactDOM.render(
@@ -17,7 +17,11 @@ let renderStart = (state) => {
   );
 }
 renderStart(store.getState());
-store._subscribe(renderStart);
+
+store.subscribe(() =>{
+  let state = store.getState()
+  renderStart(state);
+});
 
 
 
