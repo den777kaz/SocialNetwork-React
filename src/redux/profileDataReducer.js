@@ -27,7 +27,6 @@ let profileDataReducer = (state = initialState, action) => {
      return state;
 
     default:
-      console.log("method/function not exist");
       return state;
   }
 }

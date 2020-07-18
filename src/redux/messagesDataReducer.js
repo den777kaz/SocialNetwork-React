@@ -25,7 +25,7 @@ let messagesDataReducer = (state = initialState, action) => {
       let newMessage = {
         id: 53,
         message: state.updateText
-      }
+      };
       state.messages.push(newMessage);
       state.updateText = "";
       return state;

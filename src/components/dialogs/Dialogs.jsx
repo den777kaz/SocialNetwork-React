@@ -2,12 +2,24 @@ import React from 'react';
 import style from './Dialogs.module.css';
 import Message from './message/Message';
 import Dialog from './dialog/Dialog';
-import AddMessage from "./addMessage/AddMessage";
 
 const Dialogs = (props) => {
 
-  let dialogs = props.state.dialogs.map(d => <Dialog name={d.name} id={d.id} />);
-  let messages = props.state.messages.map(m => <Message message={m.message} />);
+  let dialogs = props.dialogs.map(d => <Dialog name={d.name} id={d.id} />);
+  let messages = props.messages.map(m => <Message message={m.message} />);
+
+  let textValue = React.createRef();
+
+  let changeText = () => {
+    let text = textValue.current.value;
+    props.onChangeText(text);
+  };
+
+  let addText = () => {
+    if (textValue.current.value !== "")
+    props.onAddText();
+  };
+
 
   return (
    <div className={style.dialogs}>
@@ -16,8 +28,12 @@ const Dialogs = (props) => {
      </div>
      <div className={style.messages}>
        { messages }
-       <AddMessage dispatch={props.dispatch} updateText={props.state.updateText} />
+       <div className={style.newMessage}>
+         <textarea onChange={changeText} ref={textValue} value={props.updateText} />
+         <button onClick={addText}>send</button>
+       </div>
      </div>
+
    </div>
   )
 }
