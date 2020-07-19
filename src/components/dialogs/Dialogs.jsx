@@ -5,8 +5,8 @@ import Dialog from './dialog/Dialog';
 
 const Dialogs = (props) => {
 
-  let dialogs = props.dialogs.map(d => <Dialog name={d.name} id={d.id} />);
-  let messages = props.messages.map(m => <Message message={m.message} />);
+  let dialogs = props.dialogs.map(d => <Dialog name={d.name} key={d.id} />);
+  let messages = props.messages.map(m => <Message message={m.message} key={m.id} />);
 
   let textValue = React.createRef();
 
@@ -19,7 +19,6 @@ const Dialogs = (props) => {
     if (textValue.current.value !== "")
     props.onAddText();
   };
-
 
   return (
    <div className={style.dialogs}>

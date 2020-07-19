@@ -7,7 +7,7 @@ import FriendsItem from "./friendsItem/FriendsItem";
 
 const Friends = (props) => {
 
-  let friends = props.state.users.map(f => <FriendsItem name={f.name} />);
+  let friends = props.users.map(f => <FriendsItem name={f.name} key={f.id} />);
 // console.log(props.state.users);
   return (
     <div className={style.friends}>

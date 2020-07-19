@@ -5,7 +5,7 @@ import Post from "./post/Post";
 
 const MyPosts = (props) => {
   let postTextValue = React.createRef();
-  let myPost = props.posts.map(p => <Post post={p.post} like={p.likes} />);
+  let myPost = props.posts.map(p => <Post post={p.post} like={p.likes} key={p.id} />);
 
   let changeText = () => {
     let text = postTextValue.current.value;
