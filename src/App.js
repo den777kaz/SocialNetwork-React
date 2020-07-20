@@ -10,8 +10,10 @@ import { BrowserRouter,Route } from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
+import UsersContainer from "./components/users/UsersContainer";
 
-const App = (props) => {
+
+const App = () => {
 
   return (
     <BrowserRouter>
@@ -26,6 +28,7 @@ const App = (props) => {
           <Route path='/news' component={News} />
           <Route path='/Music' component={Music} />
           <Route path='/Settings' component={Settings} />
+          <Route path='/users' component={UsersContainer} />
         </div>
       </div>
     </BrowserRouter>
