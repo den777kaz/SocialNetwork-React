@@ -17,3 +17,12 @@
     height: 220px;
     object-fit: cover;
 }
+
+.pageNumber span {
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+.selectedPage {
+    color: red;
+}
