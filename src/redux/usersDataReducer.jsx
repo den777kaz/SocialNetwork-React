@@ -3,13 +3,14 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_USERS_TOTAL_COUNT = "SET_USERS_TOTAL_COUNT";
+const SET_PRELOADER = "SET_PRELOADER";
 
 let initialState = {
   users: [],
   pageSize: 9,
   userTotalCount: 0,
-  currentPage: 1
-
+  currentPage: 1,
+  isFetching: false
 };
 
 let usersDataReducer = (state = initialState, action) => {
@@ -38,11 +39,13 @@ let usersDataReducer = (state = initialState, action) => {
       };
     case SET_USERS:
       // return { ...state, users: [...state.users, ...action.users]}
-      return { ...state, users: action.users}
+      return { ...state, users: action.users};
     case SET_CURRENT_PAGE:
-      return { ...state, currentPage: action.currentPage}
+      return { ...state, currentPage: action.currentPage};
     case SET_USERS_TOTAL_COUNT:
-      return { ...state, userTotalCount: action.count}
+      return { ...state, userTotalCount: action.count};
+    case SET_PRELOADER:
+      return { ...state, isFetching: action.isFetching};
     default:
       return state;
   }
@@ -54,5 +57,6 @@ export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
 export const setUsersAC = (users) => ({type: SET_USERS, users});
 export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setUsersTotalCountAC = (totalCount) => ({type: SET_USERS_TOTAL_COUNT, count: totalCount});
+export const preloaderAC = (isFetching) => ({type: SET_PRELOADER, isFetching});
 
 export default usersDataReducer;
