@@ -2,7 +2,6 @@ import React from 'react';
 
 import './App.css';
 import './components/header/Header'
-import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 import { BrowserRouter,Route } from "react-router-dom";
@@ -11,6 +10,7 @@ import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 import UsersContainer from "./components/users/UsersContainer";
 import ProfileContainer from "./components/profile/ProfileContainer";
+import HeaderContainer from "./components/header/HeaderContainer";
 
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
           {/*<Route path='/profile'  component={ Profile} />*/}

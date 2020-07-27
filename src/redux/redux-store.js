@@ -3,12 +3,14 @@ import profileDataReducer from "./profileDataReducer";
 import messagesDataReducer from "./messagesDataReducer";
 import friendsDataReducer from "./friendsDataReducer";
 import usersDataReducer from "./usersDataReducer";
+import usersAuthReducer from "./usersAuthReducer";
 
-let reducers = combineReducers({
-  profileData: profileDataReducer,
+let reducers =  combineReducers({
+  profileData:  profileDataReducer,
   messagesData: messagesDataReducer,
-  friendsData: friendsDataReducer,
-  usersData: usersDataReducer
+  friendsData:  friendsDataReducer,
+  usersData:    usersDataReducer,
+  auth:         usersAuthReducer
 });
 
 let store = createStore(reducers);
