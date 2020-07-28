@@ -10,7 +10,7 @@ let initialState = {
   pageSize: 9,
   userTotalCount: 0,
   currentPage: 1,
-  isFetching: false
+  isLoading: false
 };
 
 let usersDataReducer = (state = initialState, action) => {
@@ -45,7 +45,7 @@ let usersDataReducer = (state = initialState, action) => {
     case SET_USERS_TOTAL_COUNT:
       return { ...state, userTotalCount: action.count};
     case SET_PRELOADER:
-      return { ...state, isFetching: action.isFetching};
+      return { ...state, isLoading: action.isLoading};
     default:
       return state;
   }
@@ -57,6 +57,6 @@ export const unfollow = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setUsersTotalCount = (totalCount) => ({type: SET_USERS_TOTAL_COUNT, count: totalCount});
-export const preloader = (isFetching) => ({type: SET_PRELOADER, isFetching});
+export const preloader = (isLoading) => ({type: SET_PRELOADER, isLoading});
 
 export default usersDataReducer;
