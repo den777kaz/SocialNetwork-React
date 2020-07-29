@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
 const ADD_NEW_POST = "ADD-NEW-POST";
 const SET_PROFILE_USERS = "SET_PROFILE_USERS";
@@ -12,7 +14,7 @@ let initialState = {
   profile: null
 };
 
-let profileDataReducer = (state = initialState, action) => {
+const profileDataReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case ADD_NEW_POST:
@@ -44,4 +46,14 @@ let profileDataReducer = (state = initialState, action) => {
 export const changePostTextActionCreator = text => ({type: CHANGE_POST_TEXT, newText: text});
 export const addNewPostActionCreator = () => ({type: ADD_NEW_POST});
 export const setProfileUsers = (profile) => ({type: SET_PROFILE_USERS, profile});
+
+//thunk- middleware
+export const getUserInfo = (userId) => {
+  return (dispatch) => {
+    usersAPI.getUserId(userId)
+      .then(response => {
+        dispatch(setProfileUsers(response));
+      })
+  }
+}
 export default profileDataReducer;

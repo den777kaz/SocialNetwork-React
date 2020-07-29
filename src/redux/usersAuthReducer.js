@@ -1,3 +1,5 @@
+import {usersAPI as usersApi} from "../api/api";
+
 const SET_USERS_AUTH = "SET_USERS_AUTH";
 const IS_AUTH = "IS_AUTH";
 
@@ -29,5 +31,18 @@ let usersAuthReducer = (state = initialState, action) => {
 
 //action creator
 export const setAuthUserData = (userId, email, login) => ({type: SET_USERS_AUTH, data: {userId, email, login}});
+
+// thunk middleware
+export const getUserAuth = () => {
+  return (dispatch) => {
+    usersApi.getAuth()
+      .then(response => {
+        const {id, email, login} = response.data;
+        if (response.resultCode === 0){
+          dispatch(setAuthUserData(id,email,login))
+        } else alert(response.messages);
+      })
+  }
+};
 
 export default usersAuthReducer;
