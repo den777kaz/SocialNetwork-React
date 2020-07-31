@@ -11,6 +11,7 @@ import Settings from "./components/settings/Settings";
 import UsersContainer from "./components/users/UsersContainer";
 import ProfileContainer from "./components/profile/ProfileContainer";
 import HeaderContainer from "./components/header/HeaderContainer";
+import Login from "./components/login/Login";
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
           <Route path='/Music' component={Music} />
           <Route path='/Settings' component={Settings} />
           <Route path='/users' component={UsersContainer} />
+          <Route path='/login' component={Login} />
         </div>
       </div>
     </BrowserRouter>
