@@ -8,7 +8,7 @@ let initialState = {
   userId: null,
   email: null,
   login: null,
-  isAuth: false
+  isAuth: true
 };
 
 let usersAuthReducer = (state = initialState, action) => {
@@ -21,9 +21,8 @@ let usersAuthReducer = (state = initialState, action) => {
         isAuth: true
       };
     case IS_AUTH:
-      return {
-        ...state, isAuth: action.status
-      };
+      return {}
+
     default:
       return state;
   }

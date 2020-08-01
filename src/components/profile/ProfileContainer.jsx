@@ -1,10 +1,10 @@
 import React from 'react';
 import Profile from "./Profile";
-import {getUserInfo, setProfileUsers} from "../../redux/profileDataReducer";
+import {getUserInfo} from "../../redux/profileDataReducer";
 import {connect} from "react-redux";
-import {Redirect, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {withAutRedirect} from "../../hoc/withAuthRedirect";
-import Dialogs from "../dialogs/Dialogs";
+import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
 
@@ -30,9 +30,20 @@ let mapStateToProps = (state) => ({
   profile: state.profileData.profile,
 });
 
+
+
+
+
 //HOC
-let AuthRedirectComponent = withAutRedirect(ProfileContainer);
+// let AuthRedirectComponent = withAutRedirect(ProfileContainer);
 //URL
-const UrlUsersContainerComponent = withRouter(AuthRedirectComponent);
+// const UrlUsersContainerComponent = withRouter(AuthRedirectComponent);
 //REDUX
-export default connect(mapStateToProps,{ getUserInfo })(UrlUsersContainerComponent);
+// export default connect(mapStateToProps,{ getUserInfo })(UrlUsersContainerComponent);
+
+
+export default compose(
+  connect(mapStateToProps,{ getUserInfo }),
+  withRouter,
+  withAutRedirect
+)(ProfileContainer);

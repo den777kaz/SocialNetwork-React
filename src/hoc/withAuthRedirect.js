@@ -12,7 +12,7 @@ export const withAutRedirect = (Component) => {
   };
 
   const connectMapStateToProps = (state) => ({
-    auth: state.auth.isAuth,
+    isAuth: state.auth.isAuth,
   });
 
   return  connect(connectMapStateToProps)(RedirectComponent);

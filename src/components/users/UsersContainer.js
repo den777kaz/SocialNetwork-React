@@ -9,8 +9,9 @@ import {
 } from "../../redux/usersDataReducer";
 import React from "react";
 import {Preloader} from "../common/preloader/Preloader";
+import {compose} from "redux";
 
-class UsersApiComponent extends React.Component {
+class UsersContainer extends React.Component {
 
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
@@ -62,8 +63,14 @@ const mapStateToProps = (state) => {
 
 
 
-const UsersContainer = connect(mapStateToProps, {
-  getUsers,followSuccess,unFollowSuccess,setUsersTotalCount,setCurrentPage,setUsers,
-})(UsersApiComponent);
+// const UsersApiComponent = connect(mapStateToProps, {
+//   getUsers,followSuccess,unFollowSuccess,setUsersTotalCount,setCurrentPage,setUsers,
+// })(UsersContainer);
+//
+// export default UsersContainer;
 
-export default UsersContainer;
+export default compose (
+  connect(mapStateToProps, {
+    getUsers,followSuccess,unFollowSuccess,setUsersTotalCount,setCurrentPage,setUsers,
+  })
+)(UsersContainer);

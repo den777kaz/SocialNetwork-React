@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Info.module.css'
+import Status from "./status/Status";
 
 
 const Info = (props) => {
@@ -8,6 +9,7 @@ const Info = (props) => {
         <div className={style.person}>
           <div className={style.avatar}>
             <img src={props.profile.photos.large} alt="avatar"/>
+            <Status status="hallo ddddk jdjdj" />
           </div>
           <div className={style.desc}>
             <h1>{props.profile.fullName}</h1>

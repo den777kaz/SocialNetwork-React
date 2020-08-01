@@ -4,6 +4,7 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import React from "react";
 import {withAutRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 const mapStateToProps = (state) => {
@@ -24,8 +25,13 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-let AuthRedirectComponent = withAutRedirect(Dialogs);
+// let AuthRedirectComponent = withAutRedirect(Dialogs);
+//
+// const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
+//
+// export default DialogsContainer;
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
-
-export default DialogsContainer;
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAutRedirect
+)(Dialogs);
