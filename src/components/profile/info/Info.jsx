@@ -9,8 +9,8 @@ const Info = (props) => {
         <div className={style.person}>
           <div className={style.avatar}>
             <img src={props.profile.photos.large} alt="avatar"/>
-            <Status status="hallo ddddk jdjdj" />
-          </div>
+            <Status status={props.status} />
+        </div>
           <div className={style.desc}>
             <h1>{props.profile.fullName}</h1>
             <ul>

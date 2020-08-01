@@ -5,7 +5,7 @@ class Status extends React.Component {
   state = {
     editMode: false
   };
-  activateEditMode(){
+  activateEditMode = () => {
 
     this.setState({   //async !!!!
       editMode: true
@@ -25,7 +25,7 @@ class Status extends React.Component {
     return (
       <div>
         {!this.state.editMode &&
-        <span onDoubleClick={this.activateEditMode.bind(this)}>{this.props.status}</span>
+        <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
         }
         {this.state.editMode &&
         <input autoFocus={true} onBlur={this.deactivateEditMode.bind(this)} type="text" value={this.props.status}/>

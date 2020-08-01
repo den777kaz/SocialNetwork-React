@@ -16,7 +16,7 @@ const Profile = (props) => {
         <img src="https://specials-images.forbesimg.com/imageserve/5ebed2cc142a910006474ad8/960x0.jpg?fit=scale" alt=""/>
       </div>
       <div>
-        <Info profile={props.profile}/>
+        <Info profile={props.profile} status={props.status}/>
         <MyPostsContainer/>
       </div>
     </div>
