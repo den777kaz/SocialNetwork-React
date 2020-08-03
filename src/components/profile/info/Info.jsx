@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Info.module.css'
 import Status from "./status/Status";
+import userPhoto from "../../../assets/images/user.png";
 
 
 const Info = (props) => {
@@ -8,8 +9,8 @@ const Info = (props) => {
       <div>
         <div className={style.person}>
           <div className={style.avatar}>
-            <img src={props.profile.photos.large} alt="avatar"/>
-            <Status status={props.status} />
+            <img src={props.profile.photos.large != null ? props.photos.profile.large : userPhoto} alt="avatar"/>
+            <Status status={props.status} updateStatus={props.updateStatus} />
         </div>
           <div className={style.desc}>
             <h1>{props.profile.fullName}</h1>
@@ -23,7 +24,7 @@ const Info = (props) => {
         </div>
       </div>
   )
-}
+};
 
 
 export default Info;

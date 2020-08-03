@@ -65,11 +65,22 @@ export const getUserInfo = (userId) => {
   }
 };
 
-export const getStatus = (userId) => {
+export const getUserStatus = (userId) => {
   return (dispatch) => {
     profileAPI.getStatus(userId)
       .then(response => {
         dispatch(setStatus(response));
+      })
+  }
+};
+export const updateStatus = (status) => {
+  return (dispatch) => {
+    profileAPI.updateStatus(status)
+      .then(response => {
+        console.log("######",response)
+        if(response.data.resultCode === 0){
+          dispatch(setStatus(status));
+        }
       })
   }
 };

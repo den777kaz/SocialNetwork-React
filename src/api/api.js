@@ -4,7 +4,6 @@ import * as axios from "axios";
 const instance = axios.create({
   withCredentials: true,
   baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-  data: {},
   headers: {"API-KEY": "5d79fda8-d38c-4d80-894f-408b2f9d122e"}
 });
 
@@ -18,8 +17,9 @@ export const usersAPI = {
       })
   },
   getUserId(userId) {
-    return instance.get(`profile/${userId}`)
-      .then(response => {return response.data})
+    console.warn("API::::: wrong location pls replace it")
+    return profileAPI.getUserId(userId)
+
   },
   getAuth(){
     return instance.get('auth/me')
@@ -48,5 +48,8 @@ export const profileAPI = {
   getStatus(userId) {
     return instance.get(`profile/status/${userId}`)
       .then(response => {return response.data})
-  }
+  },
+  updateStatus(status) {
+    return instance.put(`profile/status`, {status: status})
+  },
 };

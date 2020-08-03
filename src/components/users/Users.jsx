@@ -1,12 +1,12 @@
 import React from 'react';
 import style from './Users.module.css';
-import userPhoto from "./../../assets/images/user.jpg"
+import userPhoto from "./../../assets/images/user.png"
 import {NavLink} from "react-router-dom";
 
 
 const Users = (props) => {
 
-  // let pagesCount = Math.ceil(props.userTotalCount / props.pageSize);
+  let pagesCount = Math.ceil(props.userTotalCount / props.pageSize);
   let pages = [];
   for (let i = 1; i <= 25; i++) {
     pages.push(i);

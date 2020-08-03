@@ -6,7 +6,7 @@
     padding: 20px 20px;
 }
 .item {
-    min-width: 200px;
+    width: 200px;
     margin-bottom: 20px;
     border: 1px solid grey;
     border-radius: 10px;
@@ -17,7 +17,10 @@
     height: 220px;
     object-fit: cover;
 }
-
+.pageNumber {
+    width: 80%;
+    overflow: hidden;
+}
 .pageNumber span {
     margin-right: 3px;
     cursor: pointer;
