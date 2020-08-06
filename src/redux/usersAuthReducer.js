@@ -1,5 +1,5 @@
 import {usersAPI as usersApi} from "../api/api";
-import {stopSubmit} from "redux-form";
+import {stopSubmit, reset} from "redux-form";
 
 const SET_USERS_AUTH = "SET_USERS_AUTH";
 const IS_AUTH = "IS_AUTH";
@@ -34,14 +34,15 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_USE
 // thunk middleware
 export const getUserAuth = () => {
   return (dispatch) => {
-    usersApi.getAuth()
+   return usersApi.getAuth()
       .then(response => {
         const {id, email, login} = response.data;
         if (response.resultCode === 0){
           dispatch(setAuthUserData(id,email,login, true))
-        } else alert(" GET AUTH:i have problem");
+        }
       })
   }
+
 };
 export const login = (email, password, rememberMe) => {
 
@@ -50,7 +51,8 @@ export const login = (email, password, rememberMe) => {
       .then(response => {
 
         if (response.data.resultCode === 0){
-          dispatch(getUserAuth())
+          dispatch(getUserAuth());
+
         } else {
           debugger
           let message = response.data.messages.length > 0 ? response.data.messages[0] : "some error";
@@ -65,7 +67,7 @@ export const logout = () => {
       .then(response => {
         if (response.data.resultCode === 0){
           dispatch(setAuthUserData(null,null,null, false))
-        } else alert("Logout: i have problem");
+        }
       })
   }
 };
