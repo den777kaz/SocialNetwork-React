@@ -17,14 +17,13 @@ import {init} from "./redux/appReducer";
 import {Preloader} from "./components/common/preloader/Preloader";
 
 
-class App extends React.Component {
-  componentDidMount() {
-    this.props.init();
+const App = (props) => {
 
-  }
+React.useEffect(()=>{
+  props.init();
+},[]);
 
-  render() {
-    if (!this.props.initialized) return  <Preloader/>;
+    if (!props.initialized) return  <Preloader/>;
 
     return (
       <BrowserRouter>
@@ -32,7 +31,7 @@ class App extends React.Component {
           <HeaderContainer/>
           <Navbar/>
           <div className="app-wrapper-content">
-            <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+            <Route  path='/profile/:userId?' render={() => <ProfileContainer/>}/>
             <Route path='/dialogs' render={() => <DialogsContainer/>}/>
             <Route path='/news' component={News}/>
             <Route path='/Music' component={Music}/>
@@ -44,7 +43,7 @@ class App extends React.Component {
       </BrowserRouter>
 
     )
-  }
+
 
 }
 
