@@ -21,11 +21,6 @@ export const usersAPI = {
     return profileAPI.getUserId(userId)
 
   },
-  getAuth(){
-    return instance.get('auth/me')
-      .then(response => {return response.data})
-  },
-
   //POST
   followUser(userId){
     return instance.post(`follow/${userId}`)
@@ -36,6 +31,16 @@ export const usersAPI = {
   unFollowUser(userId){
     return instance.delete(`follow/${userId}`)
       .then(response => {return response.data})
+  },
+  getAuth(){
+    return instance.get('auth/me')
+      .then(response => {return response.data})
+  },
+  login(email, password, rememberMe = false){
+    return instance.post('auth/login', {email, password, rememberMe});
+  },
+  logout(){
+    return instance.delete('auth/login');
   },
 };
 

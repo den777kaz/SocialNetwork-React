@@ -1,4 +1,5 @@
 import {usersAPI as usersApi} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USERS_AUTH = "SET_USERS_AUTH";
 const IS_AUTH = "IS_AUTH";
@@ -17,8 +18,7 @@ let usersAuthReducer = (state = initialState, action) => {
     case SET_USERS_AUTH:
       return {
         ...state,
-        ...action.data,
-        isAuth: true
+        ...action.payLoad
       };
     case IS_AUTH:
       return {}
@@ -29,7 +29,7 @@ let usersAuthReducer = (state = initialState, action) => {
 };
 
 //action creator
-export const setAuthUserData = (userId, email, login) => ({type: SET_USERS_AUTH, data: {userId, email, login}});
+export const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_USERS_AUTH, payLoad: {userId, email, login, isAuth}});
 
 // thunk middleware
 export const getUserAuth = () => {
@@ -38,8 +38,34 @@ export const getUserAuth = () => {
       .then(response => {
         const {id, email, login} = response.data;
         if (response.resultCode === 0){
-          dispatch(setAuthUserData(id,email,login))
-        } else alert(response.messages);
+          dispatch(setAuthUserData(id,email,login, true))
+        } else alert(" GET AUTH:i have problem");
+      })
+  }
+};
+export const login = (email, password, rememberMe) => {
+
+  return (dispatch) => {
+    usersApi.login(email, password, rememberMe)
+      .then(response => {
+
+        if (response.data.resultCode === 0){
+          dispatch(getUserAuth())
+        } else {
+          debugger
+          let message = response.data.messages.length > 0 ? response.data.messages[0] : "some error";
+          dispatch(stopSubmit("login", {_error: message}));
+        }
+      })
+  }
+};
+export const logout = () => {
+  return (dispatch) => {
+    usersApi.logout()
+      .then(response => {
+        if (response.data.resultCode === 0){
+          dispatch(setAuthUserData(null,null,null, false))
+        } else alert("Logout: i have problem");
       })
   }
 };

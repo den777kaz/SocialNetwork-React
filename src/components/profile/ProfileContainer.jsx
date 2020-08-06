@@ -12,7 +12,7 @@ componentDidMount() {
 
   //withRouter
   let userId = this.props.match.params.userId;
-  if(!userId) userId=9546;
+  if(!userId) userId=this.props.authUserId;
 
   //API
   this.props.getUserInfo(userId);
@@ -30,7 +30,8 @@ componentDidMount() {
 
 let mapStateToProps = (state) => ({
   profile: state.profileData.profile,
-  status: state.profileData.status
+  status: state.profileData.status,
+  authUserId: state.auth.userId
 });
 
 

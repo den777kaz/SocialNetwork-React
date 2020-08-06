@@ -2,8 +2,13 @@ import React, {useState} from 'react';
 import {reduxForm, Field, reset} from "redux-form";
 import {maxLength, required} from "../../utils/validation/validators";
 import {Input} from "../common/form-controls/FormControls";
+import {login} from "../../redux/usersAuthReducer";
+import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
+import style from "../common/form-controls/FormControls.module.css"
 
-const maxLength10 = maxLength(10);
+
+const maxLength20 = maxLength(20);
 
 const LoginForm = (props) => {
 
@@ -11,10 +16,10 @@ const LoginForm = (props) => {
     <form onSubmit={props.handleSubmit} >
       <div>
         <Field component={Input}
-               name="username"
+               name="email"
                type="text"
-               placeholder="Login"
-               validate={[required,maxLength10]}
+               placeholder="E-mail"
+               validate={[required, maxLength20]}
         />
 
       </div>
@@ -23,7 +28,7 @@ const LoginForm = (props) => {
                name={"password" }
                type="password"
                placeholder="password"
-               validate={[required,maxLength10]}
+               validate={[required, maxLength20]}
         />
 
       </div>
@@ -34,6 +39,10 @@ const LoginForm = (props) => {
 
         />remember me
       </div>
+      {props.error &&
+        <div className={style.summaryError}>{props.error}</div>
+      }
+
       <br/>
       <div>
         <button type="submit">Login</button>
@@ -44,22 +53,29 @@ const LoginForm = (props) => {
 };
 
 
-//RESET FORM
-const afterSubmit = (result, dispatch) =>
-  dispatch(reset('login'));
+// //RESET FORM
+// const afterSubmit = (result, dispatch) =>
+//   dispatch(reset('login'));
 
 // REDUX-FORM
 const LoginReduxForm = reduxForm({
   form: 'login',
-  onSubmitSuccess: afterSubmit
+  // onSubmitSuccess: afterSubmit
 })(LoginForm);
 
 
 
-const Login = () => {
+const Login = (props) => {
+
+  if (props.isAuth) {
+    return <Redirect to='/profile' />
+  }
+
   const onSubmit = (formData) => {
-    console.log(formData)
+    const {email,password, rememberMe} = formData;
+    props.login(email,password, rememberMe);
   };
+
   return (
     <div>
       <h1>LOGIN</h1>
@@ -68,4 +84,10 @@ const Login = () => {
   )
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.isAuth
+  }
+}
+
+export default connect (mapStateToProps, {login})(Login);

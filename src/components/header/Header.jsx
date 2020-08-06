@@ -7,7 +7,11 @@ const Header = (props) => {
   return (
     <header className={style.header}>
       <img src="https://e7.pngegg.com/pngimages/723/887/png-clipart-computer-icons-x-mark-check-mark-red-x-miscellaneous-text-thumbnail.png" alt="logo"/>
-      {props.isAuth ? props.login : <NavLink to={'/login'}> login </NavLink>}
+      {
+        props.isAuth
+          ? <div><span>{props.login}</span> <button onClick={props.logout}>Logout</button></div>
+        : <NavLink to={'/login'}> login </NavLink>
+      }
     </header>
   )
 }
