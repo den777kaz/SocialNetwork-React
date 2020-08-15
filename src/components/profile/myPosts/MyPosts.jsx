@@ -1,13 +1,13 @@
 import React from 'react';
 import style from "./MyPosts.module.css";
 import Post from "./post/Post";
-import {Field, reduxForm, reset} from "redux-form";
+import {Field, reduxForm} from "redux-form";
 import {maxLength, required} from "../../../utils/validation/validators";
 import {Textarea} from "../../common/form-controls/FormControls";
 
 
-const MyPosts = (props) => {
-  let myPost = props.posts.map(p => <Post post={p.post} like={p.likes} key={p.id} />);
+const MyPosts = React.memo((props) => {
+  let myPost = [...props.posts].reverse().map(p => <Post post={p.post} like={p.likes} key={p.id} />);
 
   const postOnSubmit = (values) => {
     props.onAddPost(values.newPostMessage);
@@ -25,11 +25,11 @@ const MyPosts = (props) => {
       </div>
     </div>
   )
-};
+});
 //REDUX-FORM
 const maxLength10 = maxLength(10);
 
-const AddPost = (props) => {
+const AddPost =  (props) => {
 
   return (
     <form onSubmit={props.handleSubmit}>

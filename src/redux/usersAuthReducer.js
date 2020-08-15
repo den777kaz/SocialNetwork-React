@@ -1,5 +1,5 @@
 import {usersAPI as usersApi} from "../api/api";
-import {stopSubmit, reset} from "redux-form";
+import {stopSubmit} from "redux-form";
 
 const SET_USERS_AUTH = "SET_USERS_AUTH";
 const IS_AUTH = "IS_AUTH";

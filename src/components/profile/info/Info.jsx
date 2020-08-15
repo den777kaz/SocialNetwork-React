@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Info.module.css'
 import Status from "./status/Status";
-import userPhoto from "../../../assets/images/user.png";
+// import userPhoto from "../../../assets/images/user.png";
 
 
 

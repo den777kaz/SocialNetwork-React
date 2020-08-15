@@ -10,7 +10,7 @@ import {
 import React from "react";
 import {Preloader} from "../common/preloader/Preloader";
 import {compose} from "redux";
-import {getAllUsers, getAllUsersSelector} from "../../redux/selectors";
+import {getAllUsers} from "../../redux/selectors";
 console.log("render")
 class UsersContainer extends React.Component {
 

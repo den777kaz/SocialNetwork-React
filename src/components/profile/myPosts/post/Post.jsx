@@ -2,7 +2,7 @@ import React from 'react';
 import style from "./Post.module.css";
 
 const Post = (probs) => {
-
+console.log("render")
   return (
       <div className={style.item}>
         <div className={style.avatar}>
@@ -12,6 +12,6 @@ const Post = (probs) => {
        <p>{probs.post}</p>
       </div>
   )
-}
+};
 
 export default Post;

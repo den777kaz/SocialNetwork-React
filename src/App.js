@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './App.css';
 import './components/header/Header'
 import Navbar from "./components/navbar/Navbar";
@@ -15,14 +14,14 @@ import Login from "./components/login/Login";
 import {connect} from "react-redux";
 import {init} from "./redux/appReducer";
 import {Preloader} from "./components/common/preloader/Preloader";
-import Switch from "react-router-dom/es/Switch";
+
 
 
 const App = (props) => {
 
     React.useEffect(() => {
         props.init();
-    }, []);
+    }, [props]);
 
     if (!props.initialized) return <Preloader/>;
 
@@ -32,9 +31,7 @@ const App = (props) => {
                 <HeaderContainer/>
                 <Navbar/>
                 <div className="app-wrapper-content">
-
                     <Route exact path='/profile/:userId?'  render={() => <ProfileContainer/>}/>
-
                     <Route path='/dialogs' render={() => <DialogsContainer/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/Music' component={Music}/>

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {reduxForm, Field, reset} from "redux-form";
+import React from 'react';
+import {reduxForm, Field} from "redux-form";
 import {maxLength, required} from "../../utils/validation/validators";
 import {Input} from "../common/form-controls/FormControls";
 import {login} from "../../redux/usersAuthReducer";

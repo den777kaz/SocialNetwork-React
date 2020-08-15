@@ -4,7 +4,7 @@ import {getUserStatus, getUserInfo, updateStatus} from "../../redux/profileDataR
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
-import {Preloader} from "../common/preloader/Preloader";
+
 
 class ProfileContainer extends React.Component {
 
