@@ -15,32 +15,35 @@ import Login from "./components/login/Login";
 import {connect} from "react-redux";
 import {init} from "./redux/appReducer";
 import {Preloader} from "./components/common/preloader/Preloader";
+import Switch from "react-router-dom/es/Switch";
 
 
 const App = (props) => {
 
-React.useEffect(()=>{
-  props.init();
-},[]);
+    React.useEffect(() => {
+        props.init();
+    }, []);
 
-    if (!props.initialized) return  <Preloader/>;
+    if (!props.initialized) return <Preloader/>;
 
     return (
-      <BrowserRouter>
-        <div className="app-wrapper">
-          <HeaderContainer/>
-          <Navbar/>
-          <div className="app-wrapper-content">
-            <Route  path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-            <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-            <Route path='/news' component={News}/>
-            <Route path='/Music' component={Music}/>
-            <Route path='/Settings' component={Settings}/>
-            <Route path='/users' component={UsersContainer}/>
-            <Route path='/login' render={() => <Login/>}/>
-          </div>
-        </div>
-      </BrowserRouter>
+        <BrowserRouter>
+            <div className="app-wrapper">
+                <HeaderContainer/>
+                <Navbar/>
+                <div className="app-wrapper-content">
+
+                    <Route exact path='/profile/:userId?'  render={() => <ProfileContainer/>}/>
+
+                    <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                    <Route path='/news' component={News}/>
+                    <Route path='/Music' component={Music}/>
+                    <Route path='/Settings' component={Settings}/>
+                    <Route path='/users' component={UsersContainer}/>
+                    <Route path='/login' render={() => <Login/>}/>
+                </div>
+            </div>
+        </BrowserRouter>
 
     )
 
@@ -48,7 +51,7 @@ React.useEffect(()=>{
 }
 
 const maStateToProps = (state) => ({
-  initialized: state.app.initialized
+    initialized: state.app.initialized
 });
 
 

@@ -10,7 +10,8 @@ import {
 import React from "react";
 import {Preloader} from "../common/preloader/Preloader";
 import {compose} from "redux";
-
+import {getAllUsers, getAllUsersSelector} from "../../redux/selectors";
+console.log("render")
 class UsersContainer extends React.Component {
 
   componentDidMount() {
@@ -39,8 +40,9 @@ class UsersContainer extends React.Component {
 
 
 const mapStateToProps = (state) => {
+  console.log("mapStateToProps")
   return {
-    users: state.usersData.users,
+    users: getAllUsers(state),  // reselect!!!
     pageSize: state.usersData.pageSize,
     userTotalCount: state.usersData.userTotalCount,
     currentPage: state.usersData.currentPage,

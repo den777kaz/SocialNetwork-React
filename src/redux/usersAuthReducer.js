@@ -54,7 +54,7 @@ export const login = (email, password, rememberMe) => {
           dispatch(getUserAuth());
 
         } else {
-          debugger
+
           let message = response.data.messages.length > 0 ? response.data.messages[0] : "some error";
           dispatch(stopSubmit("login", {_error: message}));
         }
