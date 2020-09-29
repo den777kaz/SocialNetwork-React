@@ -3,7 +3,7 @@ import './App.css';
 import './components/header/Header'
 import Navbar from "./components/navbar/Navbar";
 import DialogsContainer from "./components/dialogs/DialogsContainer";
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route, Redirect} from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
@@ -31,6 +31,7 @@ const App = (props) => {
                 <HeaderContainer/>
                 <Navbar/>
                 <div className="app-wrapper-content">
+                    <Route exact path='/'  render={() => <Redirect to="/profile" />}/>
                     <Route exact path='/profile/:userId?'  render={() => <ProfileContainer/>}/>
                     <Route path='/dialogs' render={() => <DialogsContainer/>}/>
                     <Route path='/news' component={News}/>
