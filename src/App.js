@@ -23,7 +23,7 @@ const App = (props) => {
         props.init();
     }, []);
 
-    if (!props.initialized) return <Preloader/>;
+    // if (!props.initialized) return <Preloader/>;
 
     return (
         <BrowserRouter>
